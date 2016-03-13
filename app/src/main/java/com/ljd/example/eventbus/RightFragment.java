@@ -48,6 +48,11 @@ public class RightFragment extends Fragment {
         super.onStop();
     }
 
+    /**
+     * EventBus基本用法
+     * @param event
+     */
+
 /*
     @Subscribe
     public void onMessage(MessageEvent event) {
@@ -57,6 +62,11 @@ public class RightFragment extends Fragment {
     }
 */
 
+
+    /**
+     * 测试EventBus中的线程模式
+     * @param event
+     */
     @Subscribe(threadMode = ThreadMode.POSTING)
     public void onPostingModeMessage(MessageEvent event){
 
@@ -92,5 +102,32 @@ public class RightFragment extends Fragment {
                 .append(Looper.getMainLooper() == Looper.myLooper())
                 .append("\n");
         return sb.toString();
+    }
+
+
+    @Subscribe(priority = 1)
+    public void onPriority1Message(MessageEvent event){
+
+        Log.d(TAG, "priority = 1:" + event.message);
+    }
+
+    @Subscribe(priority = 2)
+    public void onPriority2Message(MessageEvent event){
+
+        Log.d(TAG, "priority = 2:" + event.message);
+        EventBus.getDefault().cancelEventDelivery(event) ;
+    }
+
+    @Subscribe(priority = 4)
+    public void onPriority4Message(MessageEvent event){
+
+        Log.d(TAG, "priority = 4:" + event.message);
+    }
+
+    @Subscribe(priority = 3)
+    public void onPriority3Message(MessageEvent event){
+
+        Log.d(TAG, "priority = 3:" + event.message);
+
     }
 }
