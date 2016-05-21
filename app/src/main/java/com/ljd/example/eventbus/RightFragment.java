@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -53,14 +54,14 @@ public class RightFragment extends Fragment {
      * @param event
      */
 
-/*
+
     @Subscribe
     public void onMessage(MessageEvent event) {
         TextView textView = new TextView(getActivity());
         textView.setText(event.message);
         mTextViewLinear.addView(textView);
     }
-*/
+
 
 
     /**
